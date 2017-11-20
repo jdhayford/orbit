@@ -1,6 +1,7 @@
-## IS 3300: Data-Driven Web Applications
+## INFO 3300: Data-Driven Web Applications (Spring 2016)
 
 The following was a project that explored dynamic/interactive web site applications.
+
 
 Orbit Simulation:
 - Built via HTML canvas
