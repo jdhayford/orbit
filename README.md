@@ -4,7 +4,7 @@ The following was a project that explored dynamic/interactive web site applicati
 
 
 Orbit Simulation:
-- Built via HTML canvas
+- Built via HTML Canvas
 - Largely based on Brian Cruz's [gravity simulation](http://justfound.co/gravity/)
 
 ![Orbit](/img/orbit_pic.png "Orbit Simulation")
