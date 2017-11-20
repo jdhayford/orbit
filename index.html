@@ -3,367 +3,214 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title>Orbits/Satellite</title>
+  <title>Orbits/Satellite</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="css/grayscale.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="css/grayscale.css" rel="stylesheet">
 
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">    
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-   
-<style>
+  <!-- Custom Fonts -->
+  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
-.container {
-  display: table;
-  width: 100%;
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
+  </script>
+  <script src="//d3js.org/d3.v3.min.js"></script>
+  <script src="js/grav.js"></script>
+  <script src="js/ui.js"></script>
 
-}
-
-.left-half {
-  background-color: black;
-  position: absolute;
-  left: 0px;
-  width: 50%;
-  text-align: left;
-  -webkit-transform: translate(40%, 0);
-
-}
-
-.right-half {
-  background-color: black;
-  position: absolute;
-  right: 0px;
-  width: 50%;
-  text-align: left;
-    -webkit-transform: translate(10%, 0);
-}
-
-h3:first-letter, h4:first-letter,
- h5:first-letter, h6:first-letter{
-    text-transform: capitalize;
-}
-
-h2{
-    font-size: 40px;
-}
-
-h3{
-    font-size: 30px;
-    font-family: 'Roboto', sans-serif;
-    text-transform: none;
-    padding-bottom: 10px;
-}
-
-h4{
-    font-size: 20px;
-    font-family: 'Roboto', sans-serif;
-    text-transform: none;
-}
-
-#canvas {
-
-        width: 100%;
-        height: auto;
-        background: black;
-        margin: 0;
-
-        }
-
-
-#info {
-        position: absolute;
-        top:400px;
-        float: left;
-        padding: 0;
-        text-align: left;
-        }
-
-#info h4{
-    padding: 5px;
-    margin: 0;
-}        
-               
-#steps {
-        position: relative;        
-        }
-
-#instructions {
-        position: relative;
-        display: none;
-        }
-
-#about{
-    margin-top: 5%;
-    padding: 70px;
-}        
-
-#orbits{
-    position: relative;
-    margin-top: 15%;
-    padding: 100px;
-}
-
-.btn.outline {
-    background: none;
-    padding: 12px 22px;
-}
-.btn-primary.outline {
-    border: 2px solid #83F52C;
-    color: #83F52C;
-}
-.btn-primary.outline:hover, .btn-primary.outline:focus, .btn-primary.outline:active, .btn-primary.outline.active, .open > .dropdown-toggle.btn-primary {
-    color: #EE3B3B;
-    border-color: #EE3B3B;
-}
-.btn-primary.outline:active, .btn-primary.outline.active {
-    border-color: #007299;
-    color: #007299;
-    box-shadow: none;
-}
-.btn {
-    padding: 14px 24px;
-    border: 0 none;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-.btn:focus, .btn:active:focus, .btn.active:focus {
-    outline: 0 none;
-}
-
-.labels{
-    position: absolute;
-    left:30%;
-    padding-top: 10px;
-   
-}
-
-#btns{
-   position: absolute;
-   left: 50%;
-   
-}
-
-input[type=range] {
-    
-    width: 30%;
-}
-
-.range_slider{
-    position: absolute;
-    left: 45%;
-    padding:15px;
-}
-
-#satellite{
-    background: white;
-    padding-top: 100px;
-    height: 900px;
-    width: 100%;
-}
-
-#satellite h2 {
-    color: black;
-}
-
-</style>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
-    </script>
-    <script src="defin.js"></script>
-    <script src="grav.js"></script>
-    <script src="ui.js"></script>
+  <link href='css/style.css' rel='stylesheet' type='text/css'>
 
 
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-        <div class="container">
+  <!-- Navigation -->
+  <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <!-- <div class="container"> -->
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-                <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#about">About</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#orbits">Orbits</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#satellite">Satellite</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+      <ul class="nav navbar-nav">
+        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+        <li class="hidden">
+          <a href="#page-top"></a>
+        </li>
+        <li>
+          <a class="page-scroll" href="#satellite">Satellite</a>
+        </li>
+        <li>
+          <a class="page-scroll" href="#about">Orbit Types</a>
+        </li>
+        <li>
+          <a class="page-scroll" href="#orbits">Demo</a>
+        </li>
 
-    <!-- Intro Header -->
-    <header class="intro">
-        <div class="intro-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading">What's Up in Space? </h1>
-                        <h3 class="intro-text">Orbits Explained Visually<br>
+        <li>
+          <a class="page-scroll" href="#lvscatter">Launch Vehicles</a>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+    <!-- </div> -->
+    <!-- /.container -->
+  </nav>
+
+  <!-- Intro Header -->
+  <header class="intro">
+    <div class="intro-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <h1 class="brand-heading">What's Up in Space? </h1>
+            <h3 class="intro-text">Orbits Explained Visually<br>
                             And Data Visualization of Satellites</h3>
-                        <a href="#about" class="btn btn-circle page-scroll">
-                            <i class="fa fa-angle-double-down animated"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- About Section -->
-
-    <section id="about" class="container text-center">
-   
-        <h1>About Orbits</h1>
-
-          <div class="left-half">
-     
-              <h2> ISS </h2>
-                <h4>Orbit Height: 249 miles(LEO)</h4> 
-                <h4>Typical Speed: 17, 100 miles per hour</h4> 
-                <h4>Total Weight: 924,740 pounds</h4>
-         
+            <a href="#satellite" class="btn btn-circle page-scroll">
+              <i class="fa fa-angle-double-down animated"></i>
+            </a>
           </div>
-          
-          <div class="right-half">
-          
-              <h3> GEOsynchronous Satellite: </h3>
-                <h4>Orbit Height: 2,236 miles</h4> 
-                <h4>Typical Speed: 6, 877.8 miles per hour</h4> 
-                <h4>Total Weight: 3,000-10,000 pounds</h4> 
-            
-          </div>
-    </section>
-
-        
-
-    <section id="orbits" class="container content-section text-center">
-    <h4>This simulation runs at about 1350x normal time rate.</h4> 
-        </br>
-        <span class="labels"><h4>Track a body:</h4> </span>    
-        <span id="btns">
-            
-            <button class="btn btn-primary btn-lg outline" type="button" value="0" onclick="track(this.value)"> Earth </button>
-            <button class="btn btn-primary btn-lg outline" type="button" value="1" onclick="track(this.value)"> ISS </button>
-            <button class="btn btn-primary btn-lg outline" type="button" value="2" onclick="track(this.value)"> GEO </button>
-            </span>
-            
-            <br> <br> <br>
-            <span class="labels"> <h4>Zoom: </h4> </span>
-            <input class="range_slider" type="range" min="0.5" max="2.5" value="0.5" step="0.1" oninput="zoom(this.value)"/>
-
-        <canvas id="canvas"> </canvas> 
-
- 
-        <div id="info">
-            <h4 id="particle-num">Bodies: 0</h4>
-            <h4 id="gravity-const">Gravity Constant: 1</h4>
-            <h4 id="tracking">Tracking: OFF</h4>
-            <h4 id="mass-marker">Mass: 16</h4>
-            <br>
-        <button id="help" class="btn">Instructions</button>
-        
-        <h4 id="instructions">
-            Click to place a body. <br/>
-            Scroll or use arrow keys to change mass. <br />
-            Drag to give it a velocity vector. <br />
-            Press space to create a cloud.<br />
-            Press K to fill the screen.<br />
-            Middle-click or shift-click and drag to move the viewport.<br/>
-            Shift-scroll to zoom.<br/>
-            Press C to track the most massive object.<br />
-            Press D to delete all bodies not on the screen.<br />
-            Press Q/A to increase/decrease the gravity constant.<br />
-            Press P to pause/unpause.
-        </h4>
-
         </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+
+  <section id="about" class="container text-center">
+
+    <h1>Types of Orbits</h1>
+
+    <div class="row">
+      <div class="col-xs-6 col-md-4">
+        <h3> <span id="leo"> Low Earth Orbit (LEO) </span> </h3>
+        <h4><span id="leo">Range:</span> 0 - 1,240 miles</h4>
+        <h4><span id="leo">Example: </span>International Space Station</h4>
+        <h5><span id="leo">Purpose:</span> Scientific Research </h5>
+        <h5><span id="leo">Orbit Height:</span> 249 miles</h5>
+        <h5><span id="leo">Speed:</span> 17,100 miles per hour</h5>
+        <h5><span id="leo">Period:</span> 90 minutes </h5>
+      </div>
+
+      <div class="col-xs-6 col-md-4">
+        <h3> <span id="meo">Medium Earth Orbit (MEO) </span></h3>
+        <h4><span id="meo">Range:</span> 1,240 - 22,000 miles</h4>
+        <h4><span id="meo">Example:</span> Navstar-1A </h4>
+        <h5><span id="meo">Purpose:</span> Global Positioning System (GPS) </h5>
+        <h5><span id="meo">Orbit Height: </span>12,550 miles</h5>
+        <h5><span id="meo">Speed:</span> 8,640 miles per hour</h5>
+        <h5><span id="meo">Period: </span>12 hours </h5>
+      </div>
+
+      <div class="col-xs-6 col-md-4">
+        <h3> <span id="geo">Geostationary Orbit (GEO)</span> </h3>
+        <h4><span id="geo">Range:</span> 22,000 - 22,240 miles</h4>
+        <h4><span id="geo">Example: </span>Satcom-1</h4>
+        <h5><span id="geo">Purpose:</span> Communications (Cable Television)</h5>
+        <h5><span id="geo">Orbit Height:</span> 22,236 miles</h5>
+        <h5><span id="geo">Speed:</span> 6,880 miles per hour</h5>
+        <h5><span id="geo">Period:</span> 23 hours 56 minutes </h5>
+      </div>
+    </div>
+  </section>
 
 
-        <div id="steps">
-            <!-- <p id="step-counter">Steps: 0</p> -->
-            <h4 id="fps">FPS: 60.00</h4>
-        </div>
-    </section>
+  <section id="orbits" class="container content-section text-center">
 
-        <script>
-            newParticle("EARTH",5900,new Vector(0,0), 0, 0);
-            particles[0].color = new Color(0,70,190);
-            newParticle("ISS",1,new Vector(0,12.75),170,2);
-            particles[1].color = new Color(160,160,190);
-            newParticle("GEO",1,new Vector(0,5.275),1000,0);
-            particles[2].color = new Color(190,190,190);
+    <h1>Orbit Demo</h1>
+    <h4 class="white">This simulation runs at about 360x normal time rate.</h4>
 
-            function track(val) {
-                tracking = true;
-                trackIndex = val;
-            }
+    <h4> <span class="labels white">Track a body:</span> </h4>
+    <span id="btns">
+            <button class="btn btn-primary btn-lg outline" type="button" onclick="track(0)"> Earth </button>
+            <button class="btn btn-primary btn-lg outline" type="button" onclick="track(1)"> ISS </button>
+            <button class="btn btn-primary btn-lg outline" type="button" onclick="track(2)"> SATCOM-1 </button>
+        </span>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h4><span class="labels white"> Zoom: </span></h4>
+    <input class="range_slider" type="range" min="0.25" max="4" value="0.1" step="0.1" oninput="zoom(this.value)" />
+    <br>
+    <br>
+    <canvas id="canvas"> </canvas>
 
-            function zoom(val) {
-                zoomScale = val;
-            }
+    <div id="info">
+
+      <button id="add" class="glow">MISSION</button>
+
+      <div id="instructions">
+        <h4>
+                    Insert a GPS satellite into orbit. <br/>
+                    Orbital assignment: MEO <br />
+                    Reference Orbit: See Navstar-1A. <br />
+                    Controls: Adjust altitude and velocity below. <br />
+                </h4>
+        <br/>
+
+        <input id="altInput" type="range" min="250" max="22240" value="1000" step="10" style="width:100%" />
+        <h4 id="altText" style="text-align: center;"> Altitude</h4>
+        <input id="velInput" type="range" min="6880" max="17100" value="10000" step="10" style="width:100%" />
+        <h4 id="velText" style="text-align: center;"> Velocity</h4>
+        <button id="insert" class="btn btn-primary outline">Insert to Orbit</button>
+        <br/>
+        <br/>
+        <h4 id="feedback"> </h4>
+      </div>
+
+    </div>
+
+    <script src="js/orbit.js"></script>
+
+  </section>
+
+  <section id="lvscatter" class="container text-center">
+    <div id="gradient">
+      <h2>Launch Vehicles</h2>
+    </div>
+    <p>As you can imagine, getting to space (and to the different orbits) is not an easy task. In spaceflight, a launch vehicle, typically a rocket, is used to carry a payload (in this case, satellites), from the Earth's surface into outer space. Typically,
+      the further from Earth you want to go in orbit (GEO being one of the farthest), the more powerful the launch vehicle must be to successfully deliver the payload. Below, we use data from roughly 300 of the most recent satellite launch vehicles to illustrate this relationship.
+    </p>
+
+    <br>
+    <span id="checkbox">
+        <div class="filter">
+            <p>Filter by Orbits:</p>
+            <input name='v' value="GEO" type="checkbox" checked ><p class="geo">GEO </p></input>
+            <input name="v" value="LEO" type="checkbox" checked ><p class="leo">LEO</p></input>
+            <input name="v" value="MEO" type="checkbox" checked  ><p class="meo">MEO</p></input>
+            <input name="v" value="Elliptical" type="checkbox" checked> <p class="ellip"> Elliptical</p>
+        </input>
+    </div>
+</span>
+    <br>
+    <br>
+    <div class="scatter_style">
+      <script src="js/satellite_scatterplot.js"></script>
+    </div>
+
+  </section>
 
 
-            $(document).ready(function(){
-                $("#help").click(function(){
-                    $("#instructions").slideToggle();
-                });
-            });
-
-
-
-        </script>
-
-   
-    <section id="satellite" class="container text-center">
-   
-        <h2>Satellites</h2>
-
-    </section>
-   
-    <!-- Footer -->
-    <footer>
-        <div class="container text-center">
-            <p>Copyright &copy; 2016</p>
-        </div>
-    </footer>
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-    
-
-    <!-- Custom Theme JavaScript -->
-    <script src="js/grayscale.js"></script>
+  <!-- jQuery -->
+  <script src="lib/jquery.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script src="lib/bootstrap.min.js"></script>
+  <!-- Plugin JavaScript -->
+  <script src="lib/jquery.easing.min.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script src="lib/grayscale.js"></script>
 
 </body>
 
